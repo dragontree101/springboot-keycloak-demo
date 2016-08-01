@@ -1,0 +1,21 @@
+server:
+  context-path: /
+  port: 7070
+
+keycloak:
+  realm: master
+  realmKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuMyFJJjRIle/T4BcsqhfNVzB5CIzdpqFfPZaEhg7iDXFCcm8FRq5UFhtvntshhb1qGN/gD8a8umz4XjeF9i/tClRgkFS6F5cbMDWbBEEeRMYeBzRjO3IAOrHuJVVPFFbtiK3Z9O0ENeZVrURJEQtwPMpISooLNF+bBx7nqEf6DvozYL47D2MvkKEm9Q5TZPvHqfj8tsDc6mP8I5dlkYnBy7BxVtploRlpCpFtpmYKi1LCL4C/BS8G8jqEKktLfhQ922VgK0PD0XCLHzpgWZXh3Pfwxu13qCfMGX+bToV08dwQqgdyBgtjUQnw/WKCFMV39aeXqh/e07v/JI2BKb9lQIDAQAB
+  auth-server-url: http://localhost:8080/auth
+  credentials:
+    secret: afbd2fa2-4c69-4f81-a4d5-b2e7e0f5da76
+  resource: springboot-demo
+  ssl-required: none
+  enable-basic-auth: true
+
+  - securityConstraints:
+    - securityCollections:
+      name: application
+      authRoles:
+        - user
+      patterns:
+        - /*
