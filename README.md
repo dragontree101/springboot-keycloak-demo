@@ -1,8 +1,8 @@
 # springboot-keycloak-demo
 
 ## 第一步: 部署keycloak的单机模式server
-- 下载keycloak-1.9.8.Final.tar.gz包，并且解压
-- cd keycloak-1.9.8.Final/keycloak
+- 下载keycloak-2.0.0.Final.tar.gz包，并且解压
+- cd keycloak-2.0.0.Final/keycloak
 - 启动数据库 mysql
 - 创建数据库 create database keycloak;
 - bin/add-user-keycloak.sh -r master -u username -p password
