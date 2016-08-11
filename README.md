@@ -23,6 +23,19 @@
                     </driver>
                 </drivers>
 ```
+然后注释掉
+```
+<!--
+                <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:${jboss.server.data.dir}/keycloak;AUTO_SERVER=TRUE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+-->
+```
 
 - 创建目录: mkdir -p modules/system/layers/base/com/mysql/main/
 - 在main目录下添加文件module.xml文件
@@ -42,6 +55,8 @@
 ```
 
 - 在main目录下添加mysql的jar包: mysql-connector-java-5.1.33.jar
+
+- 运行脚本 bash bin/standalone.sh  启动单机模式的keycloak的server
 
 - 然后就可以访问http://localhost:8080/auth/amin
 
