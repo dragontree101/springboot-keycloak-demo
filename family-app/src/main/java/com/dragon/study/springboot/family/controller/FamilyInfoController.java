@@ -5,6 +5,7 @@ import com.dragon.study.springboot.family.service.FamilyInfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Created by dragon on 16/7/12.
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/family")
 @Slf4j
