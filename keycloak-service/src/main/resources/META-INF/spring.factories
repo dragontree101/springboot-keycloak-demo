@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.dragon.study.springboot.keycloak.config.AccessTokenConfiguration
+com.dragon.study.springboot.family.config.AccessTokenConfiguration

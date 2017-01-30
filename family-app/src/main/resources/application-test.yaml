@@ -1,0 +1,31 @@
+spring:
+  profiles: test
+  application:
+    name: spring-boot-family
+
+server:
+  port: 8088
+
+spring.datasource.family:
+  url: jdbc:mysql://127.0.0.1:3306/demo
+  username: root
+  password:
+  driver-class-name: com.mysql.jdbc.Driver
+
+#keycloak:
+#  realm: spring-boot-web
+#  realm-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuWnj9QfY0MCTlHTKvInx/3m1Jddx15f6+KI/KdPycWtC9qh0uli3aGvvdLIFxmw5oQ2ugfkoTDvqLfPB6r41g/WI8jridMl3qM2x+hk4Ma3+N+/2Mglhe2OTfYReXta4MuFgiMpXxFKwhi6QrbWZwrexozPcl9m+nEDimPdZxtZNXg1A6HEGtZSNdrd/LOsPde2YHcPLCBnhXzA6naIAoZhJUiQhODOBYgBb27M+8Z82WCTbZMJpNh+kSAx6ddOyXbmKS5lWLnqic4IRoujUT8P1VSZmocrLqCWjzJ4UGzxMzOqUptdIWUHBjzr+pKVjoOGqjLIbU1qgBQxiv7OchwIDAQAB
+#  auth-server-url: http://localhost:8080/auth
+#  ssl-required: external
+#  resource: spring-boot-jersey-demo
+#  bearer-only: true
+#  credentials:
+#    secret: 89cc5fb4-94d9-4296-b39e-c4c4a292dc3d
+#  securityConstraints:
+#    - securityCollections:
+#      - name: spring boot jersey
+#        authRoles:
+#          - user
+#          - admin
+#        patterns:
+#          - /jersey/spring-boot/hello/*

@@ -1,8 +1,8 @@
 # springboot-keycloak-demo
 
 ## 第一步: 部署keycloak的单机模式server
-- 下载keycloak-2.0.0.Final.tar.gz包，并且解压
-- cd keycloak-2.0.0.Final/keycloak
+- 下载keycloak-2.5.1.Final.tar.gz包，并且解压
+- cd keycloak-2.5.1.Final/keycloak
 - 启动数据库 mysql
 - 创建数据库 create database keycloak;
 - bin/add-user-keycloak.sh -r master -u username -p password
@@ -33,7 +33,7 @@
 <module xmlns="urn:jboss:module:1.3" name="com.mysql">
 
     <resources>
-        <resource-root path="mysql-connector-java-5.1.33.jar"/>
+        <resource-root path="mysql-connector-java-5.1.40.jar"/>
     </resources>
     <dependencies>
         <module name="javax.api"/>
@@ -41,7 +41,7 @@
 </module>
 ```
 
-- 在main目录下添加mysql的jar包: mysql-connector-java-5.1.33.jar
+- 在main目录下添加mysql的jar包: mysql-connector-java-5.1.40.jar
 
 - 然后就可以访问http://localhost:8080/auth/amin
 

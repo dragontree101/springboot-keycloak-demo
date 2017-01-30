@@ -1,4 +1,4 @@
-package com.dragon.study.springboot.keycloak.config;
+package com.dragon.study.springboot.family.config;
 
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.representations.AccessToken;

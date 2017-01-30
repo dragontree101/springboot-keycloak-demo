@@ -1,4 +1,4 @@
-package com.dragon.study.springboot.keycloak;
+package com.dragon.study.springboot.family;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
