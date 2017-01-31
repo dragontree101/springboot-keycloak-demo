@@ -12,20 +12,26 @@ spring.datasource.family:
   password:
   driver-class-name: com.mysql.jdbc.Driver
 
-#keycloak:
-#  realm: spring-boot-web
-#  realm-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuWnj9QfY0MCTlHTKvInx/3m1Jddx15f6+KI/KdPycWtC9qh0uli3aGvvdLIFxmw5oQ2ugfkoTDvqLfPB6r41g/WI8jridMl3qM2x+hk4Ma3+N+/2Mglhe2OTfYReXta4MuFgiMpXxFKwhi6QrbWZwrexozPcl9m+nEDimPdZxtZNXg1A6HEGtZSNdrd/LOsPde2YHcPLCBnhXzA6naIAoZhJUiQhODOBYgBb27M+8Z82WCTbZMJpNh+kSAx6ddOyXbmKS5lWLnqic4IRoujUT8P1VSZmocrLqCWjzJ4UGzxMzOqUptdIWUHBjzr+pKVjoOGqjLIbU1qgBQxiv7OchwIDAQAB
-#  auth-server-url: http://localhost:8080/auth
-#  ssl-required: external
-#  resource: spring-boot-jersey-demo
-#  bearer-only: true
-#  credentials:
-#    secret: 89cc5fb4-94d9-4296-b39e-c4c4a292dc3d
-#  securityConstraints:
-#    - securityCollections:
-#      - name: spring boot jersey
-#        authRoles:
-#          - user
-#          - admin
-#        patterns:
-#          - /jersey/spring-boot/hello/*
+keycloak:
+  realm: family
+  realm-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhAUWTWh+BOp69+BNeNM4irq/4BNm3PtJlv2KLEVrdSR0J2fPI4qap3aFHXY5HAaQQx8omZ6xE6ok0xsTCGcd8aepV1N6xqt8MNL9yfDh46i2l35/W8mKnm8uZSf/gEghJQXvu1LUPQMKcZg7qmkk4k//WG9nXs7EMMPglsA7GQJ7R7tpmOkcFP63hGp5QbmC6nEYjG04Hb/5XHRHV9Br4BEUL835zIvxuTUMLSKh30QcB4LE405nNqXVSAcWRkTGiMdeVt4hwl106SNP4hfmO8vj0DPgOlEcHj3A8FkHV/Csbtdm6V6EIvwW3do1lCtFd/p11v8ubblkGmy2hYyDfwIDAQAB
+  auth-server-url: http://localhost:8080/auth
+  ssl-required: external
+  resource: family-app
+  bearer-only: true
+  credentials:
+    secret: f816ef31-6283-45f0-bcd9-31157da2d956
+  securityConstraints:
+    - securityCollections:
+      - name: family commons
+        authRoles:
+          - user
+          - admin
+        patterns:
+          - /family/*
+    - securityCollections:
+      - name: family admins
+        authRoles:
+          - admin
+        patterns:
+          - /admin/*
