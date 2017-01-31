@@ -58,6 +58,16 @@
 
 - 运行脚本 bash bin/standalone.sh  启动单机模式的keycloak的server
 
-- 然后就可以访问http://localhost:8080/auth/amin
+- 然后就可以访问http://localhost:8080/auth
 
 - 使用username和password进行登录
+
+## 创建一个服务端的app
+- 安装maven,初始化springboot项目
+- 利用springboot创建了一个family-app的项目，目前提供了一个get请求，来获取数据库的family成员的数据
+- 在本地启动了这个后端服务
+
+## 创建一个前端的app
+- 安装node.js, npm, webpack, vue2, vue-cli
+- 利用vue-cli来创建一个webpack-simple项目 ```vue init webpack-simple family-js```
+- 通过ajax来调用服务端的接口，获取数据，并且以表格的形式进行展示
