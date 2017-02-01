@@ -13,14 +13,7 @@ spring.datasource.family:
   driver-class-name: com.mysql.jdbc.Driver
 
 keycloak:
-  realm: family
-  realm-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhAUWTWh+BOp69+BNeNM4irq/4BNm3PtJlv2KLEVrdSR0J2fPI4qap3aFHXY5HAaQQx8omZ6xE6ok0xsTCGcd8aepV1N6xqt8MNL9yfDh46i2l35/W8mKnm8uZSf/gEghJQXvu1LUPQMKcZg7qmkk4k//WG9nXs7EMMPglsA7GQJ7R7tpmOkcFP63hGp5QbmC6nEYjG04Hb/5XHRHV9Br4BEUL835zIvxuTUMLSKh30QcB4LE405nNqXVSAcWRkTGiMdeVt4hwl106SNP4hfmO8vj0DPgOlEcHj3A8FkHV/Csbtdm6V6EIvwW3do1lCtFd/p11v8ubblkGmy2hYyDfwIDAQAB
-  auth-server-url: http://localhost:8080/auth
-  ssl-required: external
-  resource: family-app
-  bearer-only: true
-  credentials:
-    secret: f816ef31-6283-45f0-bcd9-31157da2d956
+  configurationFile: "classpath:keycloak.json"
   securityConstraints:
     - securityCollections:
       - name: family commons
@@ -35,3 +28,12 @@ keycloak:
           - admin
         patterns:
           - /admin/*
+
+#  realm: family
+#  realm-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhAUWTWh+BOp69+BNeNM4irq/4BNm3PtJlv2KLEVrdSR0J2fPI4qap3aFHXY5HAaQQx8omZ6xE6ok0xsTCGcd8aepV1N6xqt8MNL9yfDh46i2l35/W8mKnm8uZSf/gEghJQXvu1LUPQMKcZg7qmkk4k//WG9nXs7EMMPglsA7GQJ7R7tpmOkcFP63hGp5QbmC6nEYjG04Hb/5XHRHV9Br4BEUL835zIvxuTUMLSKh30QcB4LE405nNqXVSAcWRkTGiMdeVt4hwl106SNP4hfmO8vj0DPgOlEcHj3A8FkHV/Csbtdm6V6EIvwW3do1lCtFd/p11v8ubblkGmy2hYyDfwIDAQAB
+#  auth-server-url: http://localhost:8080/auth
+#  ssl-required: external
+#  resource: family-app
+#  bearer-only: true
+#  credentials:
+#    secret: f816ef31-6283-45f0-bcd9-31157da2d956
