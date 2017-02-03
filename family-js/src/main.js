@@ -16,7 +16,11 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {console.log("route before")});
+router.beforeEach((next) => {
+  console.log("*** here");
+  store.dispatch('checkUserIsLogin');
+  next
+})
 
 new Vue({
   el: '#app',
