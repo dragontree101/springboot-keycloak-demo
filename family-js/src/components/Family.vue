@@ -38,6 +38,9 @@
     },
     methods: {
       showAllInfo: function () {
+        this.$http.headers.set('Accept', 'application/json');
+        this.$http.headers.set('Authorization', 'Bearer ' + this.$store.state.auth.authz.token);
+
         this.$http.get('http://127.0.0.1:8088/family/all').then(response => {
           // get body data
           this.familyList = response.body;
