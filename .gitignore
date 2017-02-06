@@ -30,3 +30,4 @@ src/test
 /csv-log-save/shell/Untitled 3.py
 /csv-log-save/shell/ceate_offline_table.sh
 version.yml
+*.log
