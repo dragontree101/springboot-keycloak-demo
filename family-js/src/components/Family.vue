@@ -20,6 +20,9 @@
 </template>
 
 <script>
+  import Keycloak from 'keycloak-js';
+  import store from '../store'
+
   var headers = [
     '姓名',
     '年龄',
@@ -36,12 +39,25 @@
         familyList: []
       }
     },
+    created() {
+      var keycloakAuth = new Keycloak("../keycloak.json");
+      keycloakAuth.init({onLoad: 'login-required'}).success(function () {
+        console.log("==============");
+        store.dispatch('checkUserIsLogin', keycloakAuth);
+      }).error(function () {
+        alert("failed to login");
+      });
+    },
     methods: {
       showAllInfo: function () {
-        this.$http.headers.set('Accept', 'application/json');
-        this.$http.headers.set('Authorization', 'Bearer ' + this.$store.state.auth.authz.token);
-
-        this.$http.get('http://127.0.0.1:8088/family/all').then(response => {
+//        this.$http.headers['Accept'] = 'application/json';
+//        this.$http.headers['Authorization'] = 'Bearer ' + this.$store.state.auth.authz.token;
+        this.$http.get('http://127.0.0.1:8088/family/all', {
+          headers: {
+            'Authorization': 'Bearer ' + this.$store.state.auth.authz.token,
+            'Accept': 'application/json'
+          }
+        }).then(response => {
           // get body data
           this.familyList = response.body;
         }, response => {

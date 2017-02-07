@@ -18,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Created by dragon on 16/7/12.
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/family")
 @Slf4j
@@ -26,7 +25,6 @@ public class FamilyInfoController {
 
   @Autowired
   private FamilyInfoService familyInfoService;
-
 
 
   @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
