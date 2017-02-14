@@ -3,7 +3,5 @@
   "auth-server-url": "http://localhost:8080/auth",
   "ssl-required": "external",
   "resource": "family-js",
-  "credentials": {
-    "secret": "487f8f3f-c856-413a-9fbc-255459dc1369"
-  }
+  "public-client": true
 }

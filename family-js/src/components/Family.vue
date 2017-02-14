@@ -2,6 +2,7 @@
   <div class="family">
     <h1>{{ message }}</h1>
     <button v-on:click="showAllInfo">展示家庭所有成员信息</button>
+    <button v-on:click="logout">登出</button>
     <table class="bordered" style="table-layout:fixed;" id="tables">
       <thead>
       <th v-for="item in headers">{{item}}</th>
@@ -42,7 +43,6 @@
     created() {
       var keycloakAuth = new Keycloak("../keycloak.json");
       keycloakAuth.init({onLoad: 'login-required'}).success(function () {
-        console.log("==============");
         store.dispatch('checkUserIsLogin', keycloakAuth);
       }).error(function () {
         alert("failed to login");
@@ -50,8 +50,6 @@
     },
     methods: {
       showAllInfo: function () {
-//        this.$http.headers['Accept'] = 'application/json';
-//        this.$http.headers['Authorization'] = 'Bearer ' + this.$store.state.auth.authz.token;
         this.$http.get('http://127.0.0.1:8088/family/all', {
           headers: {
             'Authorization': 'Bearer ' + this.$store.state.auth.authz.token,
@@ -62,8 +60,27 @@
           this.familyList = response.body;
         }, response => {
           // error callback
-          console.error("query server error")
+          if(response.status == 401) {
+            console.log('session timeout?');
+            console.log('*** LOGOUT');
+            store.dispatch('userLogout');
+          } else if (response.status == 403) {
+            alert("Forbidden");
+          } else if (response.status == 404) {
+            alert("Not found");
+          } else if (response.status) {
+            if (response.data && response.data.errorMessage) {
+              alert(response.data.errorMessage);
+            } else {
+              alert("An unexpected server error has occurred");
+            }
+          }
         });
+      },
+      logout: function () {
+        console.log('*** LOGOUT');
+        window.location = this.$store.state.auth.logoutUrl;
+        store.dispatch('userLogout');
       }
     }
   }

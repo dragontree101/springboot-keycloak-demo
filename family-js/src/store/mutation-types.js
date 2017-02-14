@@ -1,1 +1,2 @@
 export const CHECK_USER_IS_LOGIN = 'CHECK_USER_IS_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';

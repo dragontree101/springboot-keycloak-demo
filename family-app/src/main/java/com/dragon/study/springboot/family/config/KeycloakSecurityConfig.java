@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -17,12 +18,14 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.preauth.x509.X509AuthenticationFilter;
 import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.web.cors.CorsUtils;
 
 /**
  * Created by dragon on 16/6/19.
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
 public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
@@ -61,7 +64,10 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         .addFilterBefore(keycloakPreAuthActionsFilter(), LogoutFilter.class)
         .addFilterBefore(keycloakAuthenticationProcessingFilter(), X509AuthenticationFilter.class)
         .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint()).and()
-        .authorizeRequests().antMatchers("/family/*").hasRole("USER").antMatchers("/admin/*")
-        .hasRole("ADMIN").anyRequest().permitAll();
+        .authorizeRequests()
+        .requestMatchers(CorsUtils::isCorsRequest).permitAll()
+//        .antMatchers("/family/*").hasAnyAuthority("user").antMatchers("/admin/*").hasRole("ADMIN")
+        .antMatchers("/**").authenticated()
+        .anyRequest().permitAll();
   }
 }
